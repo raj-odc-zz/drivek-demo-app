@@ -49,7 +49,7 @@
           {{page}}
         </button>
         </span>
-        <button class="gallery__paging__cmd gallery__paging__cmd--symbol"
+        <button class="next gallery__paging__cmd gallery__paging__cmd--symbol"
         :disabled="pageNumber >= this.pageCount" @click="nextPage">&rsaquo;</button>
         <button  class="gallery__paging__cmd gallery__paging__cmd--symbol"
         @click="pageNumber=pageCount">&raquo;</button>

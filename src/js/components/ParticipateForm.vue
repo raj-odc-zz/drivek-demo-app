@@ -16,7 +16,7 @@
 										<input placeholder="Phone" name="phone" type="tel"
 										v-validate="{ required: true, numeric: true }" v-bind:class="{'error': errors.has('phone') }"
 										       class="form__el layout__item">
-										<select name="state" id="state" class="form__el layout__item" v-validate="'required|not_in:Choose'"
+										<select name="state" id="state" class="form__el layout__item" v-validate="'required|not_in:0'"
 										v-bind:class="{'error': errors.has('state') }">
 											<option v-for="option in [{value: 0, text: 'Select your state'}, {value: 1, text: 'Select'}]" :value="option.value" v-bind:value="option.value">
                         {{ option.text }}
@@ -204,10 +204,10 @@
 												<option value="amateur">Amateur</option>
 											</select>
 											<progress class="form__upload"></progress>
-											<label class="form__el" for="project-upload">
+											<label  class="form__el" for="project-upload" v-bind:class="{'error': fileValue == '' }">
 												Upload your file (.jpg/.jpeg/.png)
 												<input type="file" name="project-upload" id="project-upload"
-												       accept=".jpg,.jpeg,.png" class="hidden" @change="onFileUpload"
+												       accept=".jpg,.jpeg,.png" class="hidden" v-on:change="onFileUpload"
 															 v-validate="{ required: true }" >
 											</label>
 										</div>
@@ -216,17 +216,17 @@
 										          maxlength="1000"></textarea>
 										<div class="layout__item">
 											<div class="layout layout--stacked">
-												<input name="read-rules" id="read-rules" type="checkbox" v-validate="{ required: true }" >
-												<label for="read-rules" class="checkbox mb">
+												<input name="read-rules" id="read-rules" type="checkbox" v-validate="{ required: true }" v-model="rules">
+												<label for="read-rules" class="checkbox mb" v-bind:class="{'error': rules == false }">
 															<span class="checkbox__text">
 																<a href=""
 																   class="link__deco">I read the lorem ipsum</a>
 															</span>
 												</label>
 												<input name="read-privacy" id="read-privacy" type="checkbox" 
-												v-validate="{ required: true }" >
+												v-validate="{ required: true }" v-model="privacy">
 				
-												<label for="read-privacy" class="checkbox mb"	>
+												<label for="read-privacy" class="checkbox mb"	v-bind:class="{'error': privacy == false }">
 														<span class="checkbox__text">
 																<button id="js-showprivacy" class="link__deco">I read the privacy policy*</button>
 															</span>
@@ -262,6 +262,9 @@ Vue.use(VeeValidate);
     data () {
       return {
 				name: '',
+				fileValue: "",
+				rules: false,
+				privacy: false,
       }
     },
     methods: {
@@ -269,9 +272,12 @@ Vue.use(VeeValidate);
         let files = e.target.files || e.dataTransfer.files;
         if(files[0].size > 5242880){
           alert("Please upload file less than 5mb")
-          e.target.focus()
+					console.log("e.target",e.target)
+					e.target.value= ""
+					this.fileValue = ""
           return false
         }
+				this.fileValue = files[0].name
       },
 			onSubmit() {
 				this.$validator.validateAll()
@@ -282,7 +288,7 @@ Vue.use(VeeValidate);
 						}	
 						var formData = new FormData();
 						var fileField = document.querySelector("input[type='file']");
-						formData.append('name', 'abc123');
+						formData.append('name', 'ABC');
 						formData.append('file', fileField.files[0]);
 						fetch('https://postman-echo.com/post', {
 							method: 'POST',

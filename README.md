@@ -51,3 +51,17 @@ No test suite is provided, but introducing tests is considered a significant plu
 ### Responsive design
 
 Replicate the responsive behaviour seen in this [GIF](./responsive.gif).
+
+### Dev Doc
+ 
+1) Webpack is used for bundling the JS.
+2) Babel used to convert ES6 code to ES5 old code to support is all browser.
+3) Vue JS is shown for spliting the JS as component based and it's simple to learn, believe me this is my first app.
+4) Removed all jquery related codes, used plugins like flickity for slide and gsap for animation.
+5) Created own pagination for gallery section to display car list.
+6) Made as responsive site.
+7) Form validation I used VeeValidate plugin, I chosen because its stright forward and also package size is small.
+8) I splitted the code as component based both JS and CSS.
+9) I tought of incuding moment JS for day, month and year selection but its mock form so I didn't done.
+10) I removed jquery because its huge library which is unnecessary also I didn't included the lib JS like modernizer, utils
+11) I added 3 sample test case in pagination using Jest
