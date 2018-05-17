@@ -62,6 +62,6 @@ Replicate the responsive behaviour seen in this [GIF](./responsive.gif).
 6) Made as responsive site.
 7) Form validation I used VeeValidate plugin, I chosen because its stright forward and also package size is small.
 8) I splitted the code as component based both JS and CSS.
-9) I tought of incuding moment JS for day, month and year selection but its mock form so I didn't done.
-10) I removed jquery because its huge library which is unnecessary also I didn't included the lib JS like modernizer, utils
+9) I tought of including moment JS for day, month and year selection but its mock form so I didn't done.
+10) I removed jquery because its huge library, also I removed unnecessary JS like modernizer, utils
 11) I added 3 sample test case in pagination using Jest
