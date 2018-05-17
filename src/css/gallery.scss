@@ -1,0 +1,81 @@
+.gallery__boxes {
+  margin: 3em 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gallery__paging {
+  text-align: center;
+}
+
+.gallery__paging__cmd {
+  font-family: BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  padding: 0 0.25em;
+  margin: auto 0.25em;
+}
+
+.gallery__paging__cmd--symbol {
+  font-size: 2em;
+  line-height: 0.5;
+  vertical-align: sub;
+}
+
+.gallery__paging__cmd.is-active {
+  border-bottom: 2px solid;
+}
+
+.gallery__el {
+  text-align: center;
+  border: 1px solid #9A9A9A;
+  margin: 10px;
+  padding: 20px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  flex-basis: 20%;
+}
+
+.gallery__el::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  box-shadow: 0 0 2em rgba(0, 0, 0, .2);
+  backface-visibility: hidden;
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+  -webkit-transition: opacity .5s,
+  -webkit-transform .1s cubic-bezier(0.860, 0.000, 0.070, 1.000);
+  transition: opacity .5s,
+  -webkit-transform .1s cubic-bezier(0.860, 0.000, 0.070, 1.000);
+  transition: transform .1s cubic-bezier(0.860, 0.000, 0.070, 1.000),
+  opacity .5s;
+  transition: transform .1s cubic-bezier(0.860, 0.000, 0.070, 1.000),
+  opacity .5s,
+  -webkit-transform .1s cubic-bezier(0.860, 0.000, 0.070, 1.000);
+}
+
+.gallery__text {
+  font-size: 18px;
+}
+
+.gallery__title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.gallery__image {
+  margin-bottom: 20px;
+}
+
+@media all and (max-width:500px){
+  .gallery__el {
+    flex-basis: 100%;
+  }
+}
